@@ -25,17 +25,16 @@ Se a informação não está nas fichas, o assistente não inventa: diz que não
 ├── README.md
 ├── gs-2-prompt-and-ai.ipynb      ← notebook executado (entrega principal)
 ├── requirements.txt
-├── fichas/                       ← as 7 fichas de referência + LEIA-ME
-└── docs/
-    ├── grafo.png                 ← arquitetura do agente (LangGraph)
-    └── comparacao_versoes.png    ← acerto por tipo de mensagem: v1 x v2 x v3
+├── 00_LEIA-ME.md e FC-01 a FC-07 ← as 7 fichas de referência
+├── grafo.png                     ← arquitetura do agente (LangGraph)
+└── comparacao_versoes.png        ← acerto por tipo de mensagem: v1 x v2 x v3
 ```
 
 ## Como rodar
 
 O notebook foi feito para o **Kaggle**:
 
-1. Crie um dataset no Kaggle com os arquivos da pasta `fichas/` e adicione-o ao notebook em **Add Input**.
+1. Crie um dataset no Kaggle com os arquivos das fichas (`00_LEIA-ME.md` e `FC-01` a `FC-07`) e adicione-o ao notebook em **Add Input**.
 2. Em **Settings**, ligue **Internet: On** (Accelerator pode ficar em None).
 3. Crie uma chave gratuita em [console.groq.com](https://console.groq.com) e cadastre em **Add-ons → Secrets** com o nome `GROQ_API_KEY`.
 4. Use **Run All**. A interface sobe no Bloco 6, com um link público `gradio.live`.
@@ -44,7 +43,7 @@ Os resultados das avaliações dependem de modelos de linguagem e podem variar u
 
 ## Arquitetura
 
-![Grafo do agente](docs/grafo.png)
+![Grafo do agente](grafo.png)
 
 Um único agente, construído com **LangGraph**. A IA só entra em um nó (o atendente, que redige a resposta); todos os outros são lógica e algoritmos:
 
@@ -81,7 +80,7 @@ O juiz avalia três critérios binários: conteúdo, citação da ficha e segura
 
 O único erro da v3 (#1) é do juiz: ele classificou como invenção informações de pagamento que estão na FC-07. Em todas as versões, nenhum dado pessoal vazou, a data foi citada em 19/19 respostas de escopo e o aviso apareceu em 26/26.
 
-![Comparação entre versões](docs/comparacao_versoes.png)
+![Comparação entre versões](comparacao_versoes.png)
 
 ## Testes com usuários
 
